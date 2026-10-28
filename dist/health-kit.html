@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Healthcare Printables Kit — Asdale Dynamics, LLC</title>
+<style>
+  * { box-sizing: border-box; }
+
+  html { font-size: 11pt; }
+  body {
+    font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    color: #1f2937;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
+    background: #f3f4f6;
+  }
+
+  .page {
+    width: 210mm;
+    margin: 0 auto 18mm auto;
+    background: white;
+    padding: 16mm 15mm 18mm 15mm;
+    box-shadow: 0 0 6px rgba(0,0,0,0.08);
+    page-break-after: always;
+  }
+  .page:last-child { page-break-after: avoid; }
+
+  .page.kit-cover { background: #ffffff; }
+
+  h1 {
+    font-size: 26pt;
+    color: #0f3d5c;
+    margin: 0 0 4mm 0;
+    line-height: 1.2;
+  }
+  h2 {
+    font-size: 14pt;
+    color: #0f3d5c;
+    margin: 7mm 0 2.5mm 0;
+    border-bottom: 1.5px solid #0f3d5c;
+    padding-bottom: 1.2mm;
+    page-break-after: avoid;
+  }
+  h3 {
+    font-size: 11.5pt;
+    color: #0f3d5c;
+    margin: 5mm 0 2mm 0;
+    page-break-after: avoid;
+  }
+  p { margin: 0 0 2.5mm 0; }
+  ul { margin: 0 0 2.5mm 0; padding-left: 5mm; }
+  li { margin-bottom: 1.2mm; }
+
+  .cover-title {
+    text-align: center;
+    padding-top: 20mm;
+  }
+  .cover-title h1 { font-size: 30pt; margin-bottom: 3mm; }
+  .cover-sub {
+    font-size: 12.5pt;
+    color: #4b5563;
+    text-align: center;
+    margin-bottom: 12mm;
+  }
+  .cover-meta {
+    max-width: 140mm;
+    margin: 0 auto;
+    border: 1px solid #d1d5db;
+    background: #f9fafb;
+    padding: 5mm;
+    border-radius: 3mm;
+  }
+
+  .disclaimer {
+    font-size: 8.5pt;
+    color: #6b7280;
+    border-top: 1px solid #e5e7eb;
+    margin-top: 8mm;
+    padding-top: 3mm;
+    page-break-after: avoid;
+  }
+
+  /* Fillable fields */
+  .field { margin: 0 0 2mm 0; }
+  .field label {
+    display: inline-block;
+    font-size: 9pt;
+    font-weight: 700;
+    margin-right: 2mm;
+    color: #374151;
+  }
+  .fillable {
+    border-bottom: 1px solid #9ca3af;
+    padding: 0.6mm 0;
+    display: inline-block;
+    min-width: 30mm;
+    position: relative;
+  }
+  .fillable input {
+    border: none;
+    background: transparent;
+    font: inherit;
+    width: 100%;
+    outline: none;
+    autocomplete: off;
+  }
+  .fillable input:focus { background: #fef3c7; }
+  .fillable.inline { display: inline-block; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2mm 0 4mm 0;
+    font-size: 9.5pt;
+    page-break-inside: auto;
+  }
+  th, td {
+    border: 0.6px solid #9ca3af;
+    padding: 2mm 1.5mm;
+    text-align: left;
+    vertical-align: top;
+  }
+  th {
+    background: #eef2f7;
+    color: #0f3d5c;
+    font-weight: 700;
+    font-size: 8.5pt;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  tr.row-blank td { height: 7mm; }
+  tr { page-break-inside: avoid; }
+  td.blank-row { height: 7mm; }
+
+  .two-col { column-count: 2; column-gap: 8mm; }
+  .no-break { page-break-inside: avoid; }
+
+  .form-hint {
+    font-size: 8.5pt;
+    color: #6b7280;
+    font-style: italic;
+    margin-top: 1mm;
+  }
+
+  /* Print */
+  @media print {
+    body { background: white; padding: 0; }
+    .page {
+      margin: 0;
+      box-shadow: none;
+      width: 100%;
+      min-height: auto;
+    }
+    .no-print { display: none !important; }
+    .cover-title { padding-top: 8mm; }
+    a { color: inherit; text-decoration: none; }
+    td.blank-row { height: 6.5mm; }
+    /* Make fillable fields visible as writeable boxes on paper */
+    .fillable {
+      border: 1px solid #000 !important;
+      border-bottom: 1px solid #000 !important;
+      background: #fff !important;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .fillable input {
+      border: 1px solid #000 !important;
+      color: #000 !important;
+      background: #fff !important;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .fillable input:focus { background: #fff !important; }
+  }
+
+  /* Screen-only controls */
+  .toolbar {
+    position: fixed;
+    top: 8px; left: 8px; right: 8px;
+    background: #0f3d5c;
+    padding: 3mm 5mm;
+    border-radius: 3mm;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  }
+  @media print { .toolbar { display: none; } }
+  .toolbar .btn {
+    background: #ffffff;
+    color: #0f3d5c;
+    border: none;
+    padding: 2mm 4mm;
+    font-size: 10pt;
+    font-weight: 700;
+    border-radius: 2mm;
+    cursor: pointer;
+    margin-right: 3mm;
+  }
+  .toolbar .btn:hover { background: #e5edf3; }
+  .toolbar .btn.print { background: #11633a; color: #fff; }
+  .toolbar .btn.print:hover { background: #0f5a34; }
+  .toolbar span {
+    color: #e5edf3;
+    font-size: 9pt;
+    margin-left: 6mm;
+    vertical-align: middle;
+  }
+  @media screen { body { padding-top: 14mm; } }
+</style>
+</head>
+<body>
+
+<div class="toolbar no-print">
+  <button class="btn print" onclick="window.print()">Print / Save as PDF</button>
+  <button class="btn" onclick="window.location.reload()">Clear all fields</button>
+  <span>Healthcare Printables Kit &bull; Asdale Dynamics, LLC &bull; Education only — not medical advice</span>
+</div>
+
+<div class="page kit-cover">
+  <div class="cover-title">
+    <h1>My Healthcare Printables Kit</h1>
+    <div class="cover-sub">Appointment log &bull; Medication list &bull; Provider directory &bull; Insurance tracker</div>
+    <div class="cover-meta">
+      <div class="field"><label for="f-cover-name">Your name:</label> <span class="fillable inline"><input type="text" id="f-cover-name" autocomplete="off"></span></div>
+      <div class="field"><label for="f-cover-dob">Date of birth:</label> <span class="fillable inline"><input type="text" id="f-cover-dob" autocomplete="off"></span> &nbsp;&nbsp; <label for="f-cover-date-started">Date started:</label> <span class="fillable inline"><input type="text" id="f-cover-date-started" autocomplete="off"></span></div>
+      <div class="field"><label for="f-cover-emergency">Emergency contact:</label> <span class="fillable inline"><input type="text" id="f-cover-emergency" autocomplete="off"></span></div>
+      <div class="field"><label for="f-cover-pharmacy">Primary pharmacy:</label> <span class="fillable inline"><input type="text" id="f-cover-pharmacy" autocomplete="off"></span> &nbsp;&nbsp; <label for="f-cover-pharm-phone">Phone:</label> <span class="fillable inline"><input type="text" id="f-cover-pharm-phone" autocomplete="off"></span></div>
+    </div>
+    <div class="disclaimer">
+      Fill in the fields on screen, then print (Ctrl+P / Cmd+P) or save as PDF. Everything stays on your computer — nothing is uploaded, and no account is needed.<br><br>
+      <strong>Education only — not medical advice.</strong> This kit helps you organize paperwork. It does not diagnose, treat, or replace care from a licensed clinician.<br>
+      Made by <strong>Asdale Dynamics, LLC</strong>. Copyright (c) 2026 Asdale Dynamics, LLC. MIT License.
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <h2>1. Appointment Log</h2>
+  <p>A running list of visits so you can spot patterns, track follow-ups, and remember what was discussed. Fill in one row per appointment.</p>
+  <div class="field"><label for="f-appt-name">Your name:</label> <span class="fillable inline"><input type="text" id="f-appt-name" autocomplete="off"></span> &nbsp;&nbsp; <label for="f-appt-log-started">Log started:</label> <span class="fillable inline"><input type="text" id="f-appt-log-started" autocomplete="off"></span> &nbsp;&nbsp; <label for="f-appt-pcp">Primary care provider:</label> <span class="fillable inline"><input type="text" id="f-appt-pcp" autocomplete="off"></span></div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width:4%">#</th>
+        <th style="width:10%">Date</th>
+        <th style="width:16%">Provider / facility</th>
+        <th style="width:12%">Type of visit</th>
+        <th style="width:18%">Reason for visit</th>
+        <th style="width:13%">Follow-up needed</th>
+        <th style="width:11%">Follow-up date</th>
+        <th style="width:16%">Referrals, tests, or orders</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="row-blank"><td class="blank-row">1</td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td></tr>
+      <tr class="row-blank"><td class="blank-row">2</td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td></tr>
+      <tr class="row-blank"><td class="blank-row">3</td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td></tr>
+      <tr class="row-blank"><td class="blank-row">4</td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td></tr>
+      <tr class="row-blank"><td class="blank-row">5</td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td></tr>
+      <tr class="row-blank"><td class="blank-row">6</td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td></tr>
+      <tr class="row-blank"><td class="blank-row">7</td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td></tr>
+      <tr class="row-blank"><td class="blank-row">8</td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td></tr>
+      <tr class="row-blank"><td class="blank-row">9</td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td></tr>
+      <tr class="row-blank"><td class="blank-row">10</td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td></tr>
+    </tbody>
+  </table>
+  <p class="form-hint">After each visit, jot down: what the provider said, new medicines or changes, tests ordered and when results are due, and your next appointment date.</p>
+  <div class="field"><label for="f-appt-pharmacy">Preferred pharmacy:</label> <span class="fillable inline"><input type="text" id="f-appt-pharmacy" autocomplete="off"></span> &nbsp;&nbsp; <label for="f-appt-pharm-phone">Phone:</label> <span class="fillable inline"><input type="text" id="f-appt-pharm-phone" autocomplete="off"></span></div>
+</div>
+
+<div class="page">
+  <h2>2. Medication List</h2>
+  <p>Prescriptions, over-the-counter drugs, vitamins, and supplements. Bring this list to every appointment and share it with each provider so they can check for interactions.</p>
+  <div class="field"><label for="f-ml-name">Your name:</label> <span class="fillable inline"><input type="text" id="f-ml-name" autocomplete="off"></span> &nbsp;&nbsp; <label for="f-ml-allergies">Allergies:</label> <span class="fillable inline"><input type="text" id="f-ml-allergies" autocomplete="off"></span> &nbsp;&nbsp; <label for="f-ml-date-updated">Date updated:</label> <span class="fillable inline"><input type="text" id="f-ml-date-updated" autocomplete="off"></span></div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width:4%">#</th>
+        <th style="width:14%">Medicine name</th>
+        <th style="width:11%">Strength / dose</th>
+        <th style="width:15%">How often / when</th>
+        <th style="width:13%">Prescriber</th>
+        <th style="width:13%">Pharmacy</th>
+        <th style="width:9%">Start date</th>
+        <th style="width:9%">Stop date</th>
+        <th style="width:12%">Reason / notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="row-blank"><td class="blank-row">1</td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td></tr>
+      <tr class="row-blank"><td class="blank-row">2</td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td></tr>
+      <tr class="row-blank"><td class="blank-row">3</td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td></tr>
+      <tr class="row-blank"><td class="blank-row">4</td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td></tr>
+      <tr class="row-blank"><td class="blank-row">5</td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td></tr>
+      <tr class="row-blank"><td class="blank-row">6</td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td></tr>
+      <tr class="row-blank"><td class="blank-row">7</td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td></tr>
+      <tr class="row-blank"><td class="blank-row">8</td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td></tr>
+      <tr class="row-blank"><td class="blank-row">9</td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td></tr>
+      <tr class="row-blank"><td class="blank-row">10</td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td></tr>
+    </tbody>
+  </table>
+  <p class="form-hint"><strong>Never start, stop, or change a dose without talking to your prescriber.</strong> Education only — not medical advice.</p>
+  <div class="field"><label for="f-ml-pharmacy">My pharmacy:</label> <span class="fillable inline"><input type="text" id="f-ml-pharmacy" autocomplete="off"></span> &nbsp;&nbsp; <label for="f-ml-pharm-phone">Phone:</label> <span class="fillable inline"><input type="text" id="f-ml-pharm-phone" autocomplete="off"></span></div>
+</div>
+
+<div class="page">
+  <h2>3. Provider Directory</h2>
+  <p>Contact info for everyone involved in your care: doctors, specialists, dentists, pharmacies, labs, therapists, and care managers. Fill in one row per provider.</p>
+  <div class="field"><label for="f-pd-name">Your name:</label> <span class="fillable inline"><input type="text" id="f-pd-name" autocomplete="off"></span> &nbsp;&nbsp; <label for="f-pd-emergency">Emergency contact:</label> <span class="fillable inline"><input type="text" id="f-pd-emergency" autocomplete="off"></span> &nbsp;&nbsp; <label for="f-pd-emerg-phone">Emergency phone:</label> <span class="fillable inline"><input type="text" id="f-pd-emerg-phone" autocomplete="off"></span></div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width:4%">#</th>
+        <th style="width:18%">Provider / facility</th>
+        <th style="width:10%">Type</th>
+        <th style="width:14%">Contact name</th>
+        <th style="width:12%">Phone</th>
+        <th style="width:18%">Address</th>
+        <th style="width:16%">Patient portal / login</th>
+        <th style="width:8%">Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="row-blank"><td class="blank-row">1</td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td></tr>
+      <tr class="row-blank"><td class="blank-row">2</td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td></tr>
+      <tr class="row-blank"><td class="blank-row">3</td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td></tr>
+      <tr class="row-blank"><td class="blank-row">4</td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td></tr>
+      <tr class="row-blank"><td class="blank-row">5</td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td></tr>
+      <tr class="row-blank"><td class="blank-row">6</td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td></tr>
+      <tr class="row-blank"><td class="blank-row">7</td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td></tr>
+      <tr class="row-blank"><td class="blank-row">8</td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td></tr>
+      <tr class="row-blank"><td class="blank-row">9</td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td></tr>
+      <tr class="row-blank"><td class="blank-row">10</td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td></tr>
+    </tbody>
+  </table>
+  <div class="field"><label for="f-pd-pharmacy">Preferred pharmacy:</label> <span class="fillable inline"><input type="text" id="f-pd-pharmacy" autocomplete="off"></span> &nbsp;&nbsp; <label for="f-pd-pharm-phone">Phone:</label> <span class="fillable inline"><input type="text" id="f-pd-pharm-phone" autocomplete="off"></span></div>
+  <div class="field"><label for="f-pd-cm">Care manager / case worker:</label> <span class="fillable inline"><input type="text" id="f-pd-cm" autocomplete="off"></span> &nbsp;&nbsp; <label for="f-pd-cm-phone">Phone:</label> <span class="fillable inline"><input type="text" id="f-pd-cm-phone" autocomplete="off"></span></div>
+  <p class="form-hint">Tip: When you see a new provider, add them here right away so their number and portal login are easy to find later.</p>
+</div>
+
+<div class="page">
+  <h2>4. Insurance Tracker</h2>
+  <p>Keep your health insurance details in one place: plan info, costs, claims, and renewal dates. Update it when your plan changes or at open enrollment.</p>
+  <div class="field"><label for="f-ins-name">Your name:</label> <span class="fillable inline"><input type="text" id="f-ins-name" autocomplete="off"></span></div>
+  <div class="field"><label for="f-ins-carrier">Insurance company:</label> <span class="fillable inline"><input type="text" id="f-ins-carrier" autocomplete="off"></span> &nbsp;&nbsp; <label for="f-ins-member-id">Member ID:</label> <span class="fillable inline"><input type="text" id="f-ins-member-id" autocomplete="off"></span></div>
+  <div class="field"><label for="f-ins-group">Group number:</label> <span class="fillable inline"><input type="text" id="f-ins-group" autocomplete="off"></span> &nbsp;&nbsp; <label for="f-ins-plan">Plan name / type:</label> <span class="fillable inline"><input type="text" id="f-ins-plan" autocomplete="off"></span></div>
+  <div class="field"><label for="f-ins-effective">Effective date:</label> <span class="fillable inline"><input type="text" id="f-ins-effective" autocomplete="off"></span> &nbsp;&nbsp; <label for="f-ins-renewal">Renewal date:</label> <span class="fillable inline"><input type="text" id="f-ins-renewal" autocomplete="off"></span></div>
+  <div class="field"><label for="f-ins-phone">Member services phone:</label> <span class="fillable inline"><input type="text" id="f-ins-phone" autocomplete="off"></span> &nbsp;&nbsp; <label for="f-ins-portal">Portal / login:</label> <span class="fillable inline"><input type="text" id="f-ins-portal" autocomplete="off"></span></div>
+  <div class="field"><label for="f-ins-pcp">Primary care provider (PCP):</label> <span class="fillable inline"><input type="text" id="f-ins-pcp" autocomplete="off"></span> &nbsp;&nbsp; <label for="f-ins-referral">Referral required?</label> <span class="fillable inline"><input type="text" id="f-ins-referral" autocomplete="off"></span></div>
+  <div class="field"><label for="f-ins-pref-pharm">Preferred pharmacy:</label> <span class="fillable inline"><input type="text" id="f-ins-pref-pharm" autocomplete="off"></span> &nbsp;&nbsp; <label for="f-ins-mail-pharm">Mail-order pharmacy phone:</label> <span class="fillable inline"><input type="text" id="f-ins-mail-pharm" autocomplete="off"></span></div>
+
+  <h3>Costs (copays, deductibles, premium)</h3>
+  <table>
+    <thead>
+      <tr>
+        <th style="width:30%">Cost</th>
+        <th style="width:25%">In-network</th>
+        <th style="width:25%">Out-of-network</th>
+        <th style="width:20%">Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="row-blank"><td>PCP office visit copay</td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td></tr>
+      <tr class="row-blank"><td>Specialist visit copay</td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td></tr>
+      <tr class="row-blank"><td>Urgent care copay</td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td></tr>
+      <tr class="row-blank"><td>Emergency room copay</td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td></tr>
+      <tr class="row-blank"><td>Individual deductible</td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td></tr>
+      <tr class="row-blank"><td>Family deductible</td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td></tr>
+      <tr class="row-blank"><td>Deductible met so far (this year)</td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td></tr>
+      <tr class="row-blank"><td>Out-of-pocket maximum</td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td></tr>
+      <tr class="row-blank"><td>Out-of-pocket met so far</td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td></tr>
+      <tr class="row-blank"><td>Monthly premium</td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td></tr>
+    </tbody>
+  </table>
+
+  <h3>Claims this year</h3>
+  <table>
+    <thead>
+      <tr>
+        <th style="width:10%">Date</th>
+        <th style="width:18%">Provider / facility</th>
+        <th style="width:18%">Service</th>
+        <th style="width:14%">Amount billed</th>
+        <th style="width:14%">Paid by insurance</th>
+        <th style="width:12%">You owe</th>
+        <th style="width:14%">Claim status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="row-blank"><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td></tr>
+      <tr class="row-blank"><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td></tr>
+      <tr class="row-blank"><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td></tr>
+      <tr class="row-blank"><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td></tr>
+      <tr class="row-blank"><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td></tr>
+      <tr class="row-blank"><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td></tr>
+      <tr class="row-blank"><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td></tr>
+      <tr class="row-blank"><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td></tr>
+      <tr class="row-blank"><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td></tr>
+      <tr class="row-blank"><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td><td class="blank-row"></td></tr>
+    </tbody>
+  </table>
+  <p class="form-hint">Save the explanation of benefits (EOB) for every claim. If a claim is denied, you can appeal — check your plan's appeal window and keep copies of everything you send.</p>
+  <p class="disclaimer">Education only — not medical or insurance advice. Coverage, costs, and appeal rules vary by plan and state. Confirm benefits directly with your insurer. Asdale Dynamics, LLC is not an insurer, healthcare provider, or law firm.</p>
+</div>
+
+</body>
+</html>
